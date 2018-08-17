@@ -1,0 +1,183 @@
+@import "./weather-icons.scss";
+@import "./weather-icons-wind.scss";
+
+$mainBgColor: #c54c3c;
+$iconColor: #fff;
+$textColor: #fff;
+$textColorDark: #000;
+$iconSize: 75px;
+$iconSizeToday: 150px;
+
+@mixin transform($speed) {
+  transition: all $speed ease;
+  -webkit-transition: all $speed ease;
+  -moz-transition: all $speed ease;
+  -o-transition: all $speed ease;
+}
+
+body,
+.col,
+[class^="col-"],
+.row,
+main,
+i.wi,
+nav {
+  @include transform(0.25s);
+}
+
+body {
+  background: $mainBgColor;
+  color: $textColor;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 200;
+}
+
+.bold-text {
+  font-weight: 600 !important;
+}
+
+.semi-bold-text {
+  font-weight: 400 !important;
+}
+
+.temp:after {
+  content: "\00b0";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 200;
+}
+
+.btn-secondary:hover {
+  color: $textColorDark;
+  &:hover {
+    color: $textColor !important;
+    background-color: transparent;
+  }
+}
+
+main {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+
+  .daily {
+    text-align: center;
+    .wi {
+      color: $iconColor;
+      font-size: $iconSize;
+      &.today {
+        font-size: $iconSizeToday;
+      }
+    }
+    .info {
+      margin-top: 30px;
+    }
+  }
+
+  .navbar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: initial !important;
+    z-index: 100;
+    padding: 50px 30px 0 30px;
+    h5 {
+      color: $textColorDark;
+      font-weight: 400;
+    }
+    .previous-list {
+      margin-top: 20px;
+      a,
+      h5 {
+        color: $textColorDark;
+        font-weight: 400;
+      }
+      a {
+        cursor: pointer;
+      }
+    }
+    .picker {
+      width: 150px;
+      height: 150px;
+      border-radius: 5px;
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      .color-btn {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform;
+        transition-property: transform;
+        cursor: pointer;
+        &:hover {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+        }
+      }
+    }
+
+    h4 {
+      color: $textColorDark;
+      font-weight: 600;
+    }
+    &.hidden {
+      left: -250px;
+    }
+    input#location {
+      background-color: transparent;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid $mainBgColor;
+      font-style: italic;
+    }
+    &.bg-white {
+      background-color: rgba(255, 255, 255, 0.75) !important;
+      -webkit-box-shadow: 10px 9px 5px -5px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 10px 9px 5px -5px rgba(0, 0, 0, 0.15);
+      box-shadow: 10px 9px 5px -5px rgba(0, 0, 0, 0.15);
+    }
+    .navbar-toggler {
+      position: absolute;
+      top: 10px;
+      right: -75px;
+    }
+  }
+  #forcast > .row {
+    margin-top: 50px;
+    &:first-child .col .daily i.wi {
+      font-size: 120px;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .col-sm-6 {
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .col-sm-6 {
+    margin-bottom: 50px;
+  }
+  #forcast > .row {
+    &:first-child .col .daily i.wi {
+      font-size: 75px !important;
+    }
+  }
+}
