@@ -11,8 +11,7 @@ class App extends Component {
 
     this.state = {
       location: DEFAULT_LOCATION,
-      conditions: null,
-      prevLocations: []
+      conditions: null
     };
   }
 
@@ -42,11 +41,7 @@ class App extends Component {
         const newLoc = location.city + ", " + location.region;
         this.setState(prevState => ({
           location: newLoc,
-          conditions: res.data.query.results.channel.item,
-          prevLocations:
-            this.state.prevLocations.indexOf(newLoc) < 0
-              ? [...prevState.prevLocations, newLoc]
-              : [...prevState.prevLocations]
+          conditions: res.data.query.results.channel.item
         }));
       })
       .catch(err => alert("im sorry there was a problem retrieving data"));
@@ -58,7 +53,6 @@ class App extends Component {
         <SideBar
           location={this.state.location}
           locationSelected={this.locationSelected.bind(this)}
-          prevLocations={this.state.prevLocations}
         />
         {this.state.conditions ? (
           <Forcast
