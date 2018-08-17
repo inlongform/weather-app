@@ -1,5 +1,5 @@
-clone repo
-npm install
-npm run build
+clone repo<br/>
+npm install<br/>
+npm run build<br/>
 
 good to go
