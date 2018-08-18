@@ -15,13 +15,7 @@ $iconSizeToday: 150px;
   -o-transition: all $speed ease;
 }
 
-body,
-.col,
-[class^="col-"],
-.row,
-main,
-i.wi,
-nav {
+html * {
   @include transform(0.25s);
 }
 

@@ -7167,13 +7167,7 @@
   -o-transform: rotate(156deg);
   transform: rotate(156deg); }
 
-body,
-.col,
-[class^="col-"],
-.row,
-main,
-i.wi,
-nav {
+html * {
   transition: all 0.25s ease;
   -webkit-transition: all 0.25s ease;
   -moz-transition: all 0.25s ease;
