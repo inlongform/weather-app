@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Autocomplete from "react-google-autocomplete";
 import { Navbar, NavbarToggler, FormGroup } from "reactstrap";
 import ColorPicker from "./ColorPicker";
+import LocationList from "./LocationList";
+import SettingsPopover from "./SettingsPopover";
 
 class SideBar extends Component {
   constructor(props) {
@@ -40,6 +42,9 @@ class SideBar extends Component {
         className={!this.state.isOpen ? "hidden" : null}
       >
         <NavbarToggler onClick={this.toggle} />
+
+        <SettingsPopover />
+
         <h4>Select a City</h4>
         <FormGroup>
           <Autocomplete
@@ -52,6 +57,11 @@ class SideBar extends Component {
         </FormGroup>
 
         <ColorPicker />
+        <LocationList
+          prevLocations={this.props.prevLocations}
+          locationSelected={this.onPlaceSelected}
+          onPlacedRemoved={this.props.removeLocation}
+        />
       </Navbar>
     );
   }

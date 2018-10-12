@@ -5,7 +5,7 @@ import Daily from "../Daily/Daily";
 class Forcast extends Component {
   render() {
     const fiveDay = this.props.conditions.forecast.splice(1, 4);
-
+    // console.log(this.props.conditions.forecast);
     return (
       <Container id="forcast">
         <Row>

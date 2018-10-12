@@ -5,7 +5,7 @@ $mainBgColor: #c54c3c;
 $iconColor: #fff;
 $textColor: #fff;
 $textColorDark: #000;
-$iconSize: 75px;
+$iconSize: 40px;
 $iconSizeToday: 150px;
 
 @mixin transform($speed) {
@@ -38,12 +38,35 @@ body {
   content: "\00b0";
 }
 
+.fa-cog {
+  color: $textColorDark;
+  font-size: 25px;
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5 {
   font-weight: 200;
+}
+
+.popover {
+  h3.popover-header {
+    color: $textColorDark;
+    font-weight: 400;
+    font-size: 1.25rem;
+  }
+  .popover-body {
+    padding: 10px;
+    label: {
+      color: $textColorDark;
+    }
+    input[type="radio"]:checked {
+      color: #17a2b8;
+    }
+  }
 }
 
 .btn-secondary:hover {
@@ -69,7 +92,7 @@ main {
       }
     }
     .info {
-      margin-top: 30px;
+      margin-top: 15px;
     }
   }
 
@@ -81,17 +104,26 @@ main {
     left: 0;
     display: initial !important;
     z-index: 100;
-    padding: 50px 30px 0 30px;
-    h5 {
-      color: $textColorDark;
-      font-weight: 400;
+    padding: 20px 30px 0 30px;
+    .row {
+      justify-content: flex-end;
     }
-    .previous-list {
+
+    .location-list {
       margin-top: 20px;
-      a,
-      h5 {
+      h6 {
+        color: $textColorDark;
+        font-weight: 600;
+      }
+      a {
         color: $textColorDark;
         font-weight: 400;
+        display: inline-block;
+        padding-left: 0;
+        padding-top: 0;
+        &:hover {
+          color: $textColor;
+        }
       }
       a {
         cursor: pointer;
@@ -151,10 +183,29 @@ main {
       right: -75px;
     }
   }
-  #forcast > .row {
-    margin-top: 50px;
-    &:first-child .col .daily i.wi {
-      font-size: 120px;
+
+  #forcast {
+    padding-top: 50px;
+    .row {
+      position: relative;
+      padding: 20px;
+      margin: 0 0 20px 0;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      &:first-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      &:first-child,
+      &:last-child {
+        border: none;
+      }
+    }
+
+    > .row {
+      &:first-child .col .daily i.wi {
+        font-size: 50px;
+      }
     }
   }
 }
@@ -169,9 +220,9 @@ main {
   .col-sm-6 {
     margin-bottom: 50px;
   }
-  #forcast > .row {
-    &:first-child .col .daily i.wi {
-      font-size: 75px !important;
-    }
-  }
+  // #forcast > .row {
+  //   &:first-child .col .daily i.wi {
+  //     font-size: 75px !important;
+  //   }
+  // }
 }

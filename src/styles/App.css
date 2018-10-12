@@ -7188,12 +7188,28 @@ body {
 .temp:after {
   content: "\00b0"; }
 
+.fa-cog {
+  color: #000;
+  font-size: 25px;
+  cursor: pointer; }
+
 h1,
 h2,
 h3,
 h4,
 h5 {
   font-weight: 200; }
+
+.popover h3.popover-header {
+  color: #000;
+  font-weight: 400;
+  font-size: 1.25rem; }
+
+.popover .popover-body {
+  padding: 10px;
+  label-color: #000; }
+  .popover .popover-body input[type="radio"]:checked {
+    color: #17a2b8; }
 
 .btn-secondary:hover {
   color: #000; }
@@ -7209,11 +7225,11 @@ main {
     text-align: center; }
     main .daily .wi {
       color: #fff;
-      font-size: 75px; }
+      font-size: 40px; }
       main .daily .wi.today {
         font-size: 150px; }
     main .daily .info {
-      margin-top: 30px; }
+      margin-top: 15px; }
   main .navbar {
     width: 250px;
     position: fixed;
@@ -7222,17 +7238,23 @@ main {
     left: 0;
     display: initial !important;
     z-index: 100;
-    padding: 50px 30px 0 30px; }
-    main .navbar h5 {
-      color: #000;
-      font-weight: 400; }
-    main .navbar .previous-list {
+    padding: 20px 30px 0 30px; }
+    main .navbar .row {
+      justify-content: flex-end; }
+    main .navbar .location-list {
       margin-top: 20px; }
-      main .navbar .previous-list a,
-      main .navbar .previous-list h5 {
+      main .navbar .location-list h6 {
         color: #000;
-        font-weight: 400; }
-      main .navbar .previous-list a {
+        font-weight: 600; }
+      main .navbar .location-list a {
+        color: #000;
+        font-weight: 400;
+        display: inline-block;
+        padding-left: 0;
+        padding-top: 0; }
+        main .navbar .location-list a:hover {
+          color: #fff; }
+      main .navbar .location-list a {
         cursor: pointer; }
     main .navbar .picker {
       width: 150px;
@@ -7278,10 +7300,21 @@ main {
       position: absolute;
       top: 10px;
       right: -75px; }
-  main #forcast > .row {
-    margin-top: 50px; }
+  main #forcast {
+    padding-top: 50px; }
+    main #forcast .row {
+      position: relative;
+      padding: 20px;
+      margin: 0 0 20px 0;
+      justify-content: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25); }
+      main #forcast .row:first-child {
+        margin-bottom: 0;
+        padding-bottom: 0; }
+      main #forcast .row:first-child, main #forcast .row:last-child {
+        border: none; }
     main #forcast > .row:first-child .col .daily i.wi {
-      font-size: 120px; }
+      font-size: 50px; }
 
 @media (min-width: 576px) {
   .col-sm-6 {
@@ -7289,6 +7322,4 @@ main {
 
 @media screen and (max-width: 576px) {
   .col-sm-6 {
-    margin-bottom: 50px; }
-  #forcast > .row:first-child .col .daily i.wi {
-    font-size: 75px !important; } }
+    margin-bottom: 50px; } }
