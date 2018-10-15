@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import FontAwesome from "react-fontawesome";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { setTemp, getWeather } from "../../actions/weatherActions";
+
 import {
   Popover,
   PopoverHeader,
@@ -25,6 +29,12 @@ class SettingsPopover extends Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({
+      temp: this.props.info.temp
+    });
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -37,7 +47,9 @@ class SettingsPopover extends Component {
 
   onSave(e) {
     this.toggle();
-    console.log(this.state);
+    const { info } = this.props;
+    this.props.setTemp(this.state.temp);
+    this.props.getWeather(info.location, info.prevLocations);
   }
 
   render() {
@@ -115,4 +127,16 @@ class SettingsPopover extends Component {
   }
 }
 
-export default SettingsPopover;
+SettingsPopover.propTypes = {
+  getWeather: PropTypes.func.isRequired,
+  setTemp: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  info: state.info
+});
+
+export default connect(
+  mapStateToProps,
+  { setTemp, getWeather }
+)(SettingsPopover);

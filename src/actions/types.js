@@ -1,0 +1,5 @@
+export const GET_WEATHER = "GET_WEATHER";
+export const SET_BG_COLOR = "SET_BG_COLOR";
+export const SET_TEMP = "SET_TEMP";
+export const GET_DISPLAY_PARAMS = "GET_DISPLAY_PARAMS";
+export const REMOVE_LOCATIONS = "REMOVE_LOCATIONS";

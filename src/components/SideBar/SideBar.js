@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import Autocomplete from "react-google-autocomplete";
 import { Navbar, NavbarToggler, FormGroup } from "reactstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import ColorPicker from "./ColorPicker";
 import LocationList from "./LocationList";
 import SettingsPopover from "./SettingsPopover";
+import { getWeather } from "../../actions/weatherActions";
 
 class SideBar extends Component {
   constructor(props) {
@@ -23,11 +26,7 @@ class SideBar extends Component {
   }
 
   onPlaceSelected(e) {
-    if (e.formatted_address) {
-      this.props.locationSelected(e.formatted_address);
-    } else {
-      this.props.locationSelected(e);
-    }
+    this.props.getWeather(e.formatted_address, this.props.info.prevLocations);
 
     this.setState({
       isOpen: false
@@ -35,6 +34,7 @@ class SideBar extends Component {
   }
 
   render() {
+    const { info } = this.props;
     return (
       <Navbar
         color="white"
@@ -50,20 +50,28 @@ class SideBar extends Component {
           <Autocomplete
             className="form-control"
             id="location"
-            placeholder={this.props.location}
+            placeholder={info.location}
             onPlaceSelected={this.onPlaceSelected}
             types={["(regions)"]}
           />
         </FormGroup>
 
         <ColorPicker />
-        <LocationList
-          prevLocations={this.props.prevLocations}
-          locationSelected={this.onPlaceSelected}
-          onPlacedRemoved={this.props.removeLocation}
-        />
+        <LocationList prevLocations={info.prevLocations} />
       </Navbar>
     );
   }
 }
-export default SideBar;
+
+SideBar.propTypes = {
+  getWeather: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  info: state.info
+});
+
+export default connect(
+  mapStateToProps,
+  { getWeather }
+)(SideBar);
