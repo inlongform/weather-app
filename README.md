@@ -8,7 +8,7 @@
 
 clone repo<br/>
 npm install<br/>
-npm start for dev server <br/>
+npm start <br/>
 npm run build<br/>
 
 good to go!!
