@@ -10,5 +10,6 @@ clone repo<br/>
 npm install<br/>
 npm start <br/>
 npm run build<br/>
+npm run serve (serve must be installed -g)
 
 good to go!!
