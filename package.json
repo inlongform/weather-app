@@ -2,6 +2,11 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://weather.inlongform.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inlongform/weather-app"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.3",
